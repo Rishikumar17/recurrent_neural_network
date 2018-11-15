@@ -15,14 +15,26 @@ drive.mount('/content/drive')
 
 # ls -l "/content/drive/My Drive"
 #Importing Libraries
+#Used for data preprocessing
 import pandas as pd
+#For visualization of results
 import matplotlib.pyplot as plt
+#For numerical computations
 import numpy as np
+#Used for scaling of data(Normalization)
 from sklearn.preprocessing import MinMaxScaler
+#Initializing a neural network
 from keras.models import Sequential
+#Used for making a fully connected layer 
 from keras.layers import Dense
+#Used for adding a dropout layer for preventing overfitting
 from keras.layers import Dropout
+#LSTM layers for vanishing gradient descent in recurrent neural network
 from keras.layers import LSTM
+#For mathematical function
+import math
+#For getting mean squared error
+from sklearn.metrics import mean_squared_error
 
 #Reading the dataset
 dataset_train = pd.read_csv("/content/drive/My Drive/Google_Stock_Price_Train.csv")
@@ -101,3 +113,5 @@ plt.xlabel("Time")
 plt.ylabel("Price of Stocks")
 plt.show()
 
+#Calculating the RMSE
+rmse = math.sqrt(mean_squared_error(real_stocks, predicted_stock_price))
